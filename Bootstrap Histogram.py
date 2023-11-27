@@ -10,7 +10,7 @@ dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
 dat = dat["Combined Mileage (mpg)"]
 
-n = len(variable)
+n = len(dat)
 
 n_boot = 10_000
 
@@ -49,13 +49,14 @@ class Mileage():
     def ClearSim(self):
         self.boot_stat = []
     
+    def Plot_Data(self):
+        boot_df = pd.DataFrame({'x': self.boot_stat})
+        (
+         ggplot(boot_df, aes(x='x'))+
+         geom_histogram()
+
+            )
 
 
 
-boot_df = pd.DataFrame({'x': boot_stat})
 
-(
- ggplot(boot_df, aes(x='x'))+
- geom_histogram()
-
-    )
