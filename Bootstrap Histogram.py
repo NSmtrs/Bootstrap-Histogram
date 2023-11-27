@@ -23,31 +23,31 @@ class Mileage():
         self.n_boot = n_boot
         self.stat = stat
         self.data = dat
-        
+        self.boot_stat = []
+    
     def load_data(self, dat):
         self.data = dat
         
     def RunSim(self):
-        boot_stat = []
         for i in range(self.n_boot):
             boot_sample = self.dat.sample(26, replace = True)
             
             if self.stat == "median":
-                boot_stat.append(float(boot_sample.median()))
+                eslf.boot_stat.append(float(boot_sample.median()))
             
                 
             elif self.stat == "mean":
-                boot_stat.append(float(boot_sample.mean()))
+                self.boot_stat.append(float(boot_sample.mean()))
                 
             elif self.stat == "std dev":
-                boot_stat.append(float(boot_sample.std()))
+                self.boot_stat.append(float(boot_sample.std()))
             else:
                 raise TypeError("Wrong statistic name")
         
-        return boot_stat        
+        return self.boot_stat        
         
-    def ClearSim(boot_stat):
-        boot_stat = []
+    def ClearSim(self):
+        self.boot_stat = []
     
 
 
