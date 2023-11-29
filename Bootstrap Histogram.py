@@ -16,7 +16,7 @@ class Mileage():
         self.data = dat
         
     def RunSim(self):
-        for i in range(self.n_boot):
+        for i in range(self):
             boot_sample = self.dat.sample(26, replace = True)
             
             if self.stat == "median":
@@ -43,6 +43,15 @@ class Mileage():
          geom_histogram()
 
             )
+
+    def Conf_Int(self, level = 95)
+        lb = (1-level)/2
+        ub = (100-lb)
+        if len(self.boot_stat) > 0 :
+            np.percentile(self.boot_stat, [lb, ub])
+
+        else: 
+            print("Not enough data for valid answer")
 
 
 
