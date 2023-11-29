@@ -3,19 +3,6 @@ import matplotlib.pyplot as plt
 from plotnine import *
 import os #computer operating system
 
-
-
-os.chdir("C:\\Users\\nsmet\OneDrive\\Documents\\Custom Office Templates")
-dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
-
-dat = dat["Combined Mileage (mpg)"]
-
-n = len(dat)
-
-n_boot = 10_000
-
-stat = "mean"
-
 class Mileage():
     
     def __innit__(self, n, n_boot, stat, dat = None):
@@ -59,4 +46,14 @@ class Mileage():
 
 
 
+os.chdir("C:\\Users\\nsmet\OneDrive\\Documents\\Custom Office Templates")
+dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
+
+dat = dat["Combined Mileage (mpg)"]
+
+n = len(dat)
+
+n_boot = 10_000
+
+stat = "mean"
 
